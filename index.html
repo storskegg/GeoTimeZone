@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GeoTimeZone</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css" />
+	<link rel="stylesheet" href="/app.css" />
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.3.1/moment-timezone.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/store.js/1.3.14/store.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+	<script type="text/javascript" src="/app.js"></script>
+</head>
+<body>
+<div id="alerts"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-md-3 col-lg-4">
+      <div class="panel panel-info">
+        <header class="panel-heading">
+          <h3 class="panel-title">Geolocation</h3>
+        </header>
+        <ul class="list-group" id="geolocation_display"></ul>
+      </div>
+    </div>
+
+    <div class="col-sm-8 col-md-5 col-lg-4">
+      <div class="panel panel-info">
+        <header class="panel-heading">
+          <h3 class="panel-title">Timestamp (now)</h3>
+        </header>
+        <ul class="list-group" id="timestamp_now">
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <div class="panel panel-info">
+        <header class="panel-heading">
+          <h3 class="panel-title">Timezone Info</h3>
+        </header>
+        <ul class="list-group" id="timezone_info">
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<template id="tmpl_geolocation_display">
+<li class="list-group-item">
+  <h5 class="list-group-item-heading">Latitude</h5>
+  <p class="list-group-item-text">{{latitude}}</p>
+</li>
+<li class="list-group-item">
+  <h5 class="list-group-item-heading">Longitude</h5>
+  <p class="list-group-item-text">{{longitude}}</p>
+</li>
+</template>
+
+<template id="tmpl_timestamp_now">
+  <li class="list-group-item">
+    <h5 class="list-group-item-heading">UTC</h5>
+    <p class="list-group-item-text">{{utc.pretty}} <sup>[ {{utc.timestamp}} ]</sup></p>
+  </li>
+  <li class="list-group-item">
+    <h5 class="list-group-item-heading">Local</h5>
+    <p class="list-group-item-text">{{pretty}}</p>
+  </li>
+</template>
+
+<template id="tmpl_timezone_info">
+  <li class="list-group-item">
+    <h5 class="list-group-item-heading">Time Zone ID</h5>
+    <p class="list-group-item-text">{{timeZoneId}}</p>
+  </li>
+  <li class="list-group-item">
+    <h5 class="list-group-item-heading">Time Zone Name</h5>
+    <p class="list-group-item-text">{{timeZoneName}}</p>
+  </li>
+</template>
+
+<template id="tmpl_alerts">
+<div class="alert alert-{{type}} alert-fixed-{{location}}">
+  <strong>{{msg.heading}}</strong> {{msg.body}}
+</div>
+</template>
+</body>
+</html>
