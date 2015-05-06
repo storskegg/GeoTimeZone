@@ -1,1 +1,27 @@
-html{background-color:#31487b}body{background-color:transparent}
+html {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/102862/binding_dark2.png);
+}
+body {
+  background-color: transparent;
+}
+.container {
+  margin-top: 2rem;
+}
+.panel-info {
+  border-color: #555;
+}
+.panel-info .panel-heading {
+  background-color: #555;
+  border-color: cyan;
+}
+.panel-info .panel-heading h3 {
+  color: cyan;
+}
+.panel-info .list-group {
+  background: #999;
+}
+.panel-info .list-group .list-group-item {
+  background: #999;
+  color: #b3ffff;
+  border-color: #b3ffff;
+}
